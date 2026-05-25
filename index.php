@@ -12,16 +12,16 @@
 <table class="nav-menu" cellspacing="0">    <tr>
         <!--  TR ADALAH BARIS, TD ADALAH KOLOM -->
         <td>    
-            <a href="index.html">Home</a>
+            <a href="index.php">Home</a>
         </td>
         
         <td>
-            <a href="Profile.html">Profile</a>
+            <a href="Profile.php">Profile</a>
         </td>
         <td>
-            <a href="Contact.html">Contact</a>
+            <a href="Contact.php">Contact</a>
         </td>
-        <td><a href="Mahasiswa.html">Mahasiswa</a></td>
+        <td><a href="Mahasiswa.php">Mahasiswa</a></td>
        
     </tr>
 </table>
