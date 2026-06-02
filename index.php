@@ -1,9 +1,10 @@
+<!-- pbw-weekly.test -->
 <!DOCTYPE html>
 <html lang="id">
     <!-- Praktikum Sulthan Attallah 13182420115 -->
 <head>
     <meta charset="UTF-8">
-    <title>Web Attaa Coy</title>
+    <title>pbw weekly atta</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>

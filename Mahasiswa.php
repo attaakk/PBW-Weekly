@@ -1,3 +1,18 @@
+<?php
+        $koneksi = mysqli_connect("localhost", "root", "", "PBW_Weekly");
+        $query = "SELECT * FROM mahasiswa";
+        $result = mysqli_query($koneksi, $query);
+
+        // while ($mhs = mysqli_fetch_assoc($result))(
+        //     var_dump($mhs)
+        // )
+
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,19 +57,29 @@
     <th>No. HP<th>
     <th>Foto</th>
     </tr>
+    <?php
+        $no = 1;
+        while ($mhs = (mysqli_fetch_row($result)))
+        {
 
-    <tr>
-    <td algin="center">1</td>
-    <td>Sulthan Attallah</td>
-    <td algin="center">13182420115</td>
-    <td algin="center">Informatika</td>
-    <td algin="center">att@gmail.com</td>
-    <td>08581234567</td>
-    <td><img src="assets/images/fotoke1.jpg" width="70px" height="70px"/></td>
-    <td>
-        <a href="ubahdata.php"><button>Edit</button></a> | <a href="hapusdata.php"><button>Hapus</button></a>
-    </td>
-    </tr>
+    ?>
+
+        <tr>
+            <td algin="center"><?=  $no?></td>
+            <td><?php echo $mhs[1]?></td>
+            <td algin="center"><?=  $mhs[2]?></td>
+            <td algin="center"><?=  $mhs[3]?></td>
+            <td algin="center"><?=  $mhs[4]?></td>
+            <td><?=  $mhs[5]?></td>
+            <td><img src="gambar/<?= $mhs[6] ?>" width="120px" height="90px" alt="foto"/></td>
+            <td>
+                <a href="ubahdata.php"><button>Edit</button></a> | <a href="hapusdata.php"><button>Hapus</button></a>
+            </td>
+        </tr>
+    <?php
+        $no++;
+        }
+    ?>
         </strong>
     </table>
 </h3>
