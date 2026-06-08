@@ -1,3 +1,22 @@
+<?php
+        require 'fungsi.php';
+
+        if(isset($_POST['kirim'])){
+            if(tambahdata($_POST) > 0){
+                echo "<script>
+                        alert('Data Berhasil Ditambahkan!');
+                        window.location.href = 'Mahasiswa.php';
+                    </script>";
+            } else {
+                echo "<script>
+                        alert('Data Gagal Ditambahkan!');
+                        window.location.href = 'Mahasiswa.php';
+                    </script>";
+            }
+        
+        }
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -24,99 +43,41 @@
     </tr>
 </table>
     <h2>Input Data Mahasiswa</h2>
-    <form action="Mahasiswa.php" method="post">
+    <form action="" method="post">
         <table class="data-table" border="0" cellspacing="5px "> 
             <tr>
                 <td><label for="nama">Nama</label></td>
                 <td>:</td>
-                <td><input type="text" name="nama" id="nama"/></td>
+                <td><input type="text" name="nama" id="nama" required/></td>
             </tr>
             <tr>
                 <td><label for="nim">NIM</label></td>
                 <td>:</td>
-                <td><input type="number" name="nim" id="nim"/></td>
+                <td><input type="number" name="nim" id="nim" required/></td>
             </tr>
             <tr>
-                <td><label for="password">Password</label></td>
+                <td><label for="prodi">Program Studi</label></td>
                 <td>:</td>
-                <td><input type="password" name="password" id="password"/></td>
+                <td><input type="text" name="jurusan" id="prodi" required/></td>
             </tr>
             <tr> 
                <td><label for="email">Email</label></td>
                <td>:</td>
-               <td><input type="email" name="email" id="email"/></td>
+               <td><input type="email" name="email" id="email" required/></td>
             </tr>
             <tr>
                 <td><label for="no_hp">No HP</label></td>
                 <td>:</td>
-                <td><input type="tel" name="no_hp" id="no_hp"/></td>
-            </tr>
-            <tr>
-                <td><label for="website_pribadi">Website Pribadi</label></td>
-                <td>:</td>
-                <td><input type="url" name="website_pribadi" id="website_pribadi"/></td>
-            </tr>
-            <tr>
-                <td><label for="tanggal_lahir">Tanggal Lahir</label></td>
-                <td>:</td>
-                <td><input type="date" name="tanggal_lahir" id="tanggal_lahir"/></td>
-            </tr>
-            <tr>    
-                <td><label for="warna_favorite">Warna Favorit</label></td>
-                <td>:</td>
-                <td><input type="color" name="warna_favorite" id="warna_favorite"/></td>
-            </tr>
-            <tr>
-                <td><label for="tingkat_kepuasan">Tingkat Kepuasan</label></td>
-                <td>:</td>
-                <td><input type="range" name="tingkat_kepuasan" id="tingkat_kepuasan" min="0" max="100"/></td>
-            </tr>
-            <tr>
-                <td><label for="jenis_kelamin">Jenis Kelamin</label></td>
-                <td>:</td>
-                <td>
-                    <input type="radio" name="jenis_kelamin" id="laki_laki" value="Laki-laki"/>
-                    <label for="laki_laki">Laki-laki</label>
-                    <input type="radio" name="jenis_kelamin" id="perempuan" value="Perempuan"/>
-                    <label for="perempuan">Perempuan</label>
-                </td>
-            </tr>
-            <tr>
-                <td><label for="hobi">Hobi</label></td>
-                <td>:</td>
-                <td>
-                    <input type="checkbox" name="hobi" id="hobi1" value="Ngegame"/>
-                    <label for="hobi1">Ngegame</label>
-                    <input type="checkbox" name="hobi" id="hobi2" value="Memahat Kayu"/>
-                    <label for="hobi2">Memahat Kayu</label>
-                    <input type="checkbox" name="hobi" id="hobi3" value="Mendengarkan Musik"/>
-                    <label for="hobi3">Mendengarkan Musik</label>
-                </td>
+                <td><input type="tel" name="no_hp" id="no_hp" required/></td>
             </tr>
             <tr>
                 <td><label for="foto">Foto</label></td>
                 <td>:</td>
-                <td><input type="file" name="foto" id="foto"/></td>
-            </tr>
-             <tr>
-                <td><label for="alamat">Alamat</label></td>
-                <td>:</td>
-                <td><textarea name="alamat" id="alamat"></textarea></td>
-            </tr>
-            <tr>
-                <td><label for="jurusan">Jurusan</label></td>
-                <td>:</td>
-                <td>
-                    <select name="jurusan" id="jurusan">
-                        <option value="Teknik Informatika">Teknik Informatika</option>
-                        <option value="Sistem Informasi">Sistem Informasi</option>
-                        <option value="Desain Komunikasi Visual">Desain Komunikasi Visual</option>
-                    </select>
-                </td>
+                <td><input type="text" name="foto" id="foto" required/></td>
             </tr>
             <tr>
                 <td colspan="3" align="center">
-                <input type="submit" name="submit" value="Kirim Data"/>
+                <button type="submit" name="kirim">Kirim Data</button>
                 </td>
             </tr>
         </table>

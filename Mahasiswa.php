@@ -1,13 +1,12 @@
 <?php
-        $koneksi = mysqli_connect("localhost", "root", "", "PBW_Weekly");
-        $query = "SELECT * FROM mahasiswa";
-        $result = mysqli_query($koneksi, $query);
+        require 'fungsi.php';
+        // $koneksi = mysqli_connect("localhost", "root", "", "PBW_Weekly");
+        $qmahasiswa = "SELECT * FROM mahasiswa";
 
-        // while ($mhs = mysqli_fetch_assoc($result))(
-        //     var_dump($mhs)
-        // )
+        $mahasiswas = tampildata($qmahasiswa);
 
 
+        // ?masih error karna database belm d buat
 
 ?>
 
@@ -54,13 +53,12 @@
     <th>NIM</th>
     <th>Jurusan</th>
     <th>Email</th>
-    <th>No. HP<th>
+    <th>No. HP</th>
     <th>Foto</th>
     </tr>
     <?php
         $no = 1;
-        while ($mhs = (mysqli_fetch_row($result)))
-        {
+        foreach($mahasiswas as $mhs){
 
     ?>
 
