@@ -71,7 +71,9 @@
             <td><?=  $mhs[5]?></td>
             <td><img src="gambar/<?= $mhs[6] ?>" width="120px" height="90px" alt="foto"/></td>
             <td>
-                <a href="ubahdata.php"><button>Edit</button></a> | <a href="hapusdata.php"><button>Hapus</button></a>
+                <a href="ubahdata.php?id=<?=  $mhs [0] ?>"><button>Edit</button></a> | 
+                <a href="hapusdata.php?id=<?= $mhs[0] ?>" onclick="return confirm('Yakinnn kah manizz?')"
+                ><button>Hapus</button></a>
             </td>
         </tr>
     <?php
