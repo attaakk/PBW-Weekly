@@ -1,3 +1,6 @@
+<?php
+require 'fungsi.php';
+?>
 <!-- pbw-weekly.test -->
 <!DOCTYPE html>
 <html lang="id">
@@ -12,18 +15,30 @@
 <hr>
 <table class="nav-menu" cellspacing="0">    <tr>
         <!--  TR ADALAH BARIS, TD ADALAH KOLOM -->
-        <td>    
+        <td>
             <a href="index.php">Home</a>
         </td>
-        
         <td>
             <a href="Profile.php">Profile</a>
         </td>
         <td>
             <a href="Contact.php">Contact</a>
         </td>
-        <td><a href="Mahasiswa.php">Mahasiswa</a></td>
-       
+        <td>
+            <a href="Mahasiswa.php">Mahasiswa</a>
+        </td>
+        <?php if(isset($_SESSION["login"])) : ?>
+            <td>
+                <a href="logout.php">Logout</a>
+            </td>
+        <?php else : ?>
+            <td>
+                <a href="login.php">Login</a>
+            </td>
+            <td>
+                <a href="register.php">Register</a>
+            </td>
+        <?php endif; ?>
     </tr>
 </table>
 <h1>Selamat Datang di Website Saya</h1>

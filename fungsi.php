@@ -1,9 +1,20 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 // 1. Koneksi ke file SQLite yang ada di folder yang sama
 try {
     $koneksi = new PDO("sqlite:PBW_Weekly.db");
     // Mengatur agar PDO menampilkan error jika query salah
     $koneksi->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+    // Create users table if not exists
+    $koneksi->exec("CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT NOT NULL UNIQUE,
+        password TEXT NOT NULL
+    )");
 } catch (PDOException $e) {
     die("Koneksi database gagal: " . $e->getMessage());
 }
@@ -95,6 +106,50 @@ function ubahdata($data, $id)
         $stmt = $koneksi->prepare($query);
         $stmt->execute();
         return $stmt->rowCount();
+    } catch (PDOException $e) {
+        return 0;
+    }
+}
+
+// 6. Fungsi Register
+function register($data) {
+    global $koneksi;
+    
+    $username = strtolower(stripslashes($data["username"]));
+    $password = $data["password"];
+    $password_confirm = $data["password_confirm"];
+    
+    // Cek username sudah ada atau belum
+    $stmt_check = $koneksi->prepare("SELECT username FROM users WHERE username = :username");
+    $stmt_check->bindParam(':username', $username);
+    $stmt_check->execute();
+    
+    if ($stmt_check->fetch()) {
+        echo "<script>
+                alert('Username sudah terdaftar!');
+              </script>";
+        return false;
+    }
+    
+    // Cek konfirmasi password
+    if ($password !== $password_confirm) {
+        echo "<script>
+                alert('Konfirmasi password tidak sesuai!');
+              </script>";
+        return false;
+    }
+    
+    // Enkripsi password
+    $password_hash = password_hash($password, PASSWORD_DEFAULT);
+    
+    // Tambahkan user baru ke database
+    try {
+        $stmt_insert = $koneksi->prepare("INSERT INTO users (username, password) VALUES (:username, :password)");
+        $stmt_insert->bindParam(':username', $username);
+        $stmt_insert->bindParam(':password', $password_hash);
+        $stmt_insert->execute();
+        
+        return $stmt_insert->rowCount();
     } catch (PDOException $e) {
         return 0;
     }

@@ -77,3 +77,26 @@ button {
 button:hover {
   background-color: #0056b3;
 }
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  outline: none;
+}
